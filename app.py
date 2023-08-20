@@ -2,7 +2,7 @@
 def carregar_dados():
     quartos = []
     clientes = []
-
+    #ignore
     try:
         with open("hotel_data.csv", "r") as arquivo:
             linhas = arquivo.readlines()
