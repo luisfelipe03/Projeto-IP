@@ -1,3 +1,26 @@
+'''
+SISTEMA DE GESTÃO DE HOTEL
+
+Desenvolvedores: Luis Felipe de Oliveira Andrade
+                 Phylypy Cabral de Lima Tavares 
+
+Para mais informações sobre o sistema leia o arquivo README.txt
+'''
+#-----------------------------------------------------MENU--------------------------------------------------------
+
+def menu():
+    print("1. Cadastrar quarto")
+    print("2. Cadastrar cliente")
+    print("3. Editar quarto")
+    print("4. Editar cliente")
+    print("5. Remover quarto")
+    print("6. Remover cliente")
+    print("7. Buscar quarto por número ou ID")
+    print("8. Buscar cliente por nome ou ID")
+    print("9. Ver todos os quartos reservados")
+    print("10. Sair")
+    return input("Escolha uma opção: ")
+
 #------------------------------------------------CARREGAR DADOS-------------------------------------------------
 def carregar_dados():
     clientes = []
@@ -47,20 +70,6 @@ def carregar_dados():
         print(f"Erro ao carregar os dados: {e}")
     return quartos, clientes, reservas
             
-#-----------------------------------------------------MENU--------------------------------------------------------
-
-def menu():
-    print("1. Cadastrar quarto")
-    print("2. Cadastrar cliente")
-    print("3. Editar quarto")
-    print("4. Editar cliente")
-    print("5. Remover quarto")
-    print("6. Remover cliente")
-    print("7. Buscar quarto por número ou ID")
-    print("8. Buscar cliente por nome ou ID")
-    print("9. Ver todos os quartos reservados")
-    print("10. Sair")
-    return input("Escolha uma opção: ")
 
 #-----------------------------------------------CADASTRAR QUARTO------------------------------------------------
 
@@ -213,7 +222,9 @@ def principal():
     clientes, quartos, reservas = carregar_dados()
     
     while True:
+        print("-=-=-=-=-=-=-=-=-=-=-=Bates Motel-=-=-=-=-=-=-=-=-=-=-=")
         escolha = menu()
+        
 
         if escolha == 1:
             cadastrar_quarto(quartos)

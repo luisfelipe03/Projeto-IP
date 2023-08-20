@@ -14,24 +14,28 @@ def dados():
             }
             clientes.append(cliente)
 
-def remover_cliente():
-    while True:    
+def remover_cliente(): 
+    while True: 
         print("------QUAL CLIENTE VOCÊS DESEJA REMOVER ?------\n")
         for i in clientes:
-                print(f"ID = {i['id']}\nNome = {i['nome']}\nRG = {i['RG']}")
-                print("-=-=-=-=-=-=-=-=-=-=-=-=-=")
+            print(f"ID = {i['id']}\nNome = {i['nome']}\nRG = {i['RG']}")
+            print("-=-=-=-=-=-=-=-=-=-=-=-=-=")
+            
         try:
             escolha = int(input("Digite o ID do cliente que você quer remover: "))
-            for i in clientes:
-                if i['id'] != escolha:
-                    continue
-                else:    
-                    print(f"NÃO TEM CLIENTE CADASTRADO COM ID: {escolha}")
-                    continue
+            cliente_encontrado = None
+            for cliente in clientes:
+                if cliente['id'] == escolha:
+                    cliente_encontrado = cliente
+                    break
+                        
+                if cliente_encontrado:
+                    print(f"Cliente com ID {escolha} removido com sucesso.")
+                else:
+                    print(f"Nenhum cliente cadastrado com ID {escolha}.")
         except ValueError:
-            print("OPÇÃO INVALIDA!")
-            continue
-    print(escolha)
+            print("Opção inválida!")
+    
         
 dados()
 
