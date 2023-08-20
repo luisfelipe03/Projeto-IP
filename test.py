@@ -1,7 +1,7 @@
 clientes = []
 
-def dados():        
-    with open("./clientes.csv", "r", encoding="UTF-8") as c:
+def dados():
+    with open("./Projeto-IP/clientes.csv", "r", encoding="UTF-8") as c:
         linhas = c.readlines()
         for linha in linhas:
             dados = linha.strip().split(',')
@@ -14,142 +14,25 @@ def dados():
             }
             clientes.append(cliente)
 
-def verifica_rg_existente_cliente(rg):
-    for cliente in clientes:
-        if cliente["RG"] == rg:
-            return True
-    return False
-
-def verifica_cpf_existente_cliente(cpf):
-    for cliente in clientes:
-        if cliente["CPF"] == cpf:
-            return True
-    return False
-
-def cadastrar_cliente():
-    dados()  # Carregar os clientes existentes
-
-    if not clientes:
-        id = 1
-    else:
-        ultimo_dicionario = clientes[-1]
-        id = ultimo_dicionario.get("id") + 1
-
-    nome = input("Nome do cliente: ")
-    idade = input("Idade do cliente: ")
-
-    while True:
-        cpf = input("CPF do cliente: ")
-        if verifica_cpf_existente_cliente(cpf):
-            print(f"Já existe cliente cadastrado com CPF: {cpf}")
+def remover_cliente():
+    while True:    
+        print("------QUAL CLIENTE VOCÊS DESEJA REMOVER ?------\n")
+        for i in clientes:
+                print(f"ID = {i['id']}\nNome = {i['nome']}\nRG = {i['RG']}")
+                print("-=-=-=-=-=-=-=-=-=-=-=-=-=")
+        try:
+            escolha = int(input("Digite o ID do cliente que você quer remover: "))
+            for i in clientes:
+                if i['id'] != escolha:
+                    continue
+                else:    
+                    print(f"NÃO TEM CLIENTE CADASTRADO COM ID: {escolha}")
+                    continue
+        except ValueError:
+            print("OPÇÃO INVALIDA!")
             continue
-        break
-
-    while True:
-        rg = input("RG do cliente: ")
-        if verifica_rg_existente_cliente(rg):
-            print(f"Já existe cliente cadastrado com esse RG: {rg}")
-            continue
-        break
-
-    cliente = {
-        "id": id,
-        "nome": nome,
-        "idade": idade,
-        "CPF": cpf,
-        "RG": rg
-    }
-
-    clientes.append(cliente)
-    print("Cliente cadastrado com sucesso!")
-
-# Chame a função dados() para carregar os clientes existentes
+    print(escolha)
+        
 dados()
 
-for i in clientes:
-    print(i)
-
-cadastrar_cliente()
-
-for i in clientes:
-    print(i)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+remover_cliente()

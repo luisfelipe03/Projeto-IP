@@ -6,7 +6,7 @@ def carregar_dados():
     
     try:
         #Exportando dados dos clientes
-        with open("./clientes.csv", "r", encoding="UTF-8") as c:
+        with open("./Projeto-IP/clientes.csv", "r", encoding="UTF-8") as c:
             linhas = c.readlines()
             for linha in linhas:
                 dados = linha.strip().split(',')
@@ -20,7 +20,7 @@ def carregar_dados():
                 clientes.append(cliente)
             
         #Exportando dados dos quartos        
-        with open("./quartos.csv", "r", encoding="UTF-8") as q:
+        with open("./Projeto-IP/quartos.csv", "r", encoding="UTF-8") as q:
             for i in q:
                 id, num, reser = i.strip().split(',')
                 quarto = {
@@ -30,7 +30,7 @@ def carregar_dados():
                 }
                 quartos.append(quarto)
         
-        with open("./reservas.csv", "r", encoding="UTF-8") as r:
+        with open("./Projeto-IP/reservas.csv", "r", encoding="UTF-8") as r:
             for linha in r:
                 id_quarto, id_cliente, check_in, check_out = linha.strip().split(',')
                 reserva = {
@@ -43,6 +43,8 @@ def carregar_dados():
                 reservas.append(reserva)
     except FileNotFoundError:
         print("Arquivo não encontrado")
+    except Exception as e:
+        print(f"Erro ao carregar os dados: {e}")
     return quartos, clientes, reservas
             
 #-----------------------------------------------------MENU--------------------------------------------------------
@@ -95,8 +97,57 @@ def cadastrar_quarto(quartos):
     quartos.append(quarto)
     print("Quarto cadastrado com sucesso!")
 
+#-----------------------------------------------CADASTRAR CLIENTE------------------------------------------------
+"""def verifica_rg_existente_cliente(rg, clientes):
+    for cliente in clientes:
+        if cliente["RG"] == rg:
+            return True
+    return False
 
+def verifica_cpf_existente_cliente(cpf, clientes):
+    for cliente in clientes:
+        if cliente["CPF"] == cpf:
+            return True
+    return False"""
 
+def cadastrar_cliente(clientes):
+
+    nome = input("Nome do cliente: ")
+    idade = input("Idade do cliente: ")
+    cpf = str(input("CPF do cliente: "))
+    rg = str(input("RG do cliente: "))
+    
+    """while True:
+        rg = input("RG do cliente: ")
+        if verifica_rg_existente_cliente(rg):
+            print(f"Já existe cliente cadastrado com esse RG: {rg}")
+            continue
+        break
+
+    while True:
+        cpf = input("CPF do cliente: ")
+        if verifica_cpf_existente_cliente(cpf):
+            print(f"Já existe cliente cadastrado com CPF: {cpf}")
+            continue
+        break"""
+        
+    #Verifica o ultimo ID e soma +1 para continuar a sequencia dos IDs
+    if not clientes:
+        id = 1
+    else:
+        ultimo_dicionario = clientes[-1]
+        id = ultimo_dicionario.get("id") + 1
+
+    cliente = {
+        "id": id,
+        "nome": nome,
+        "idade": idade,
+        "CPF": cpf,
+        "RG": rg
+    }
+
+    clientes.append(cliente)
+    print("Cliente cadastrado com sucesso!")
 
 
 
