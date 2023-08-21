@@ -1,42 +1,42 @@
-clientes = []
+quartos = []
 
 def dados():
-    with open("./Projeto-IP/clientes.csv", "r", encoding="UTF-8") as c:
-        linhas = c.readlines()
-        for linha in linhas:
-            dados = linha.strip().split(',')
-            cliente = {
-                "id": int(dados[0]),
-                "nome": str(dados[1]),
-                "idade": str(dados[2]),
-                "CPF": str(dados[3]),
-                "RG": str(dados[4])
-            }
-            clientes.append(cliente)
+    with open("./Projeto-IP/quartos.csv", "r", encoding="UTF-8") as q:
+            for i in q:
+                id, num, reser = i.strip().split(',')
+                quarto = {
+                    "id":int(id),
+                    "numero":int(num),
+                    "reservado": bool(reser)
+                }
+                quartos.append(quarto)
 
-def remover_cliente(): 
+def remover_quarto(quartos): 
     while True: 
-        print("------QUAL CLIENTE VOCÊS DESEJA REMOVER ?------\n")
-        for i in clientes:
-            print(f"ID = {i['id']}\nNome = {i['nome']}\nRG = {i['RG']}")
+        print("------QUAL QUARTO VOCÊ DESEJA REMOVER ?------\n")
+        for i in quartos:
+            print(f"ID = {i['id']}\nNumero do quarto = {i['numero']}\nReservado = {i['reservado']}")
             print("-=-=-=-=-=-=-=-=-=-=-=-=-=")
             
         try:
-            escolha = int(input("Digite o ID do cliente que você quer remover: "))
-            cliente_encontrado = None
-            for cliente in clientes:
-                if cliente['id'] == escolha:
-                    cliente_encontrado = cliente
+            escolha = int(input("Digite o ID do quarto que você quer remover (ou 0 para voltar ao menu): "))
+            
+            if escolha == 0:
+                break  
+              
+            quarto_encontrado = None
+            for quarto in quartos:
+                if quarto['id'] == escolha:
+                    quarto_encontrado = quarto
                     break
                         
-                if cliente_encontrado:
-                    print(f"Cliente com ID {escolha} removido com sucesso.")
-                else:
-                    print(f"Nenhum cliente cadastrado com ID {escolha}.")
+            if quarto_encontrado:
+                quartos.remove(quarto_encontrado)
+                print(f"Quarto com ID {escolha} removido com sucesso.")
+            else:
+                print(f"Nenhum quarto cadastrado com ID {escolha}.")
         except ValueError:
             print("Opção inválida!")
-    
-        
-dados()
 
-remover_cliente()
+dados()
+remover_quarto(quartos)
