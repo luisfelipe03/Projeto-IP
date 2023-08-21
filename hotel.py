@@ -32,7 +32,7 @@ def carregar_dados():
     
     try:
         #Exportando dados dos clientes
-        with open("./Projeto-IP/clientes.csv", "r", encoding="UTF-8") as c:
+        with open("./Projeto-IP/assets/clientes.csv", "r", encoding="UTF-8") as c:
             linhas = c.readlines()
             for linha in linhas:
                 dados = linha.strip().split(',')
@@ -46,17 +46,17 @@ def carregar_dados():
                 clientes.append(cliente)
             
         #Exportando dados dos quartos        
-        with open("./Projeto-IP/quartos.csv", "r", encoding="UTF-8") as q:
+        with open("./Projeto-IP/assets/quartos.csv", "r", encoding="UTF-8") as q:
             for i in q:
                 id, num, reser = i.strip().split(',')
                 quarto = {
                     "id":int(id),
                     "numero":int(num),
-                    "reservado": bool(reser)
+                    "reservado": reser
                 }
                 quartos.append(quarto)
         
-        with open("./Projeto-IP/reservas.csv", "r", encoding="UTF-8") as r:
+        with open("./Projeto-IP/assets/reservas.csv", "r", encoding="UTF-8") as r:
             for linha in r:
                 id_reserva,id_quarto, id_cliente, check_in, check_out = linha.strip().split(',')
                 reserva = {
@@ -76,17 +76,85 @@ def carregar_dados():
 
 #------------------------------------------------SALVAR DADOS-------------------------------------------------
 def salvar_dados(quartos, clientes, reservas):
-    with open("./Projeto-IP/clientes.csv", "w", encoding="UTF-8") as arquivo:
+    with open("./Projeto-IP/assets/clientes.csv", "w", encoding="UTF-8") as arquivo:
         for cliente in clientes:
              arquivo.write(f"{cliente['id']},{cliente['nome']},{cliente['idade']},{cliente['cpf']},{cliente['rg']}\n")
     
-    with open("./Projeto-IP/quartos.csv", "w", encoding="UTF-8") as arquivo:  
+    with open("./Projeto-IP/assets/quartos.csv", "w", encoding="UTF-8") as arquivo:  
         for quarto in quartos:    
             arquivo.write(f"{quarto['id']},{quarto['numero']},{quarto['reservado']}")   
             
-    with open("./Projeto-IP/reservas.csv", "w", encoding="UTF-8") as arquivo:
+    with open("./Projeto-IP/assets/reservas.csv", "w", encoding="UTF-8") as arquivo:
         for reserva in reservas:
             arquivo.write(f"{reserva['id_reserva']},{reserva['id_quarto']},{reserva['id_cliente']},{reserva['check-in']},{reserva['check-out']}")  
+
+#-----------------------------------------------FAZER RESERVA------------------------------------------------
+def fazer_reserva(quartos, clientes, reservas):
+    while True:
+        # Verifica o ultimo ID e soma +1 para continuar a sequencia dos IDs 
+        if not reservas:
+            id = 1
+        else:
+            ultimo_dicionario = reservas[-1]
+            id = ultimo_dicionario.get("id") + 1
+            
+        # Verifica se a quartos cadastrados
+        if not quartos:
+            print("Não a quartos cadastrados")
+            break
+                
+            
+        # Verifica se a clientes cadastrados    
+        if not clientes:
+            print("Não a clientes cadastrados")
+            break
+                
+        #Verifica quartos disponiveis 
+        quartos_disponivel = []
+        print("QUARTOS DISPONIVEIS:\n")
+        for quarto in quartos:
+            if quarto["reservado"] == 'nao':
+                quartos_disponivel.append(quarto['id'])
+                print(f"{quarto['id']} - Quarto.{quarto['numero']}")
+        escolha_quarto = int(input("Escolha o quarto: "))
+            
+        if escolha_quarto not in quartos_disponivel:
+            print("OPÇÃO INVALIDA")
+            
+        #Escolher cliente
+        lista_clientes = []
+        print('\nA RESERVA É PARA QUAL CLIENTE: \n')
+        for cliente in clientes:
+            lista_clientes.append(cliente['id'])
+            print(f"{cliente['id']} - {cliente['nome']}")
+        escolha_cliente = int(input("Escolha o cliente: "))
+            
+        if escolha_cliente not in lista_clientes:
+            print("OPÇÃO INVALIDA")
+                
+        #Escolher Check-IN
+        check_in = str(input("INFORME A DATA DE CHECK-IN(dd/mm/aaaa): "))
+            
+        #Escolher Check-OUT
+        check_out = str(input("INFORME A DATA DE CHECK-OUT(dd/mm/aaaa): "))
+            
+        #mudando status 'reservado' p/ sim
+        for i in quartos:
+            if i['id'] == escolha_quarto:
+                i['reservado'] = 'sim'
+                    
+        reserva = {
+            "id_reserva":id,
+            "id_quarto":escolha_quarto,
+            "id_cliente":escolha_cliente,
+            "check-in":check_in,
+            "check-out":check_out
+        }
+            
+        reservas.append(reserva)
+        print("Reserva feito com sucesso!")
+    print("Voltando para o menu")    
+    menu()
 
 #-----------------------------------------------CADASTRAR QUARTO------------------------------------------------
 
@@ -99,6 +167,7 @@ def verifica_numero_existente_quarto(numero, quartos):
 
 def cadastrar_quarto(quartos):
     
+    # Verifica o ultimo ID e soma +1 para continuar a sequencia dos IDs
     if not quartos:
         id = 1
     else:
@@ -158,7 +227,7 @@ def cadastrar_cliente(clientes):
             continue
         break"""
         
-    #Verifica o ultimo ID e soma +1 para continuar a sequencia dos IDs
+    # Verifica o ultimo ID e soma +1 para continuar a sequencia dos IDs
     if not clientes:
         id = 1
     else:
@@ -235,7 +304,7 @@ def remover_cliente(clientes):
 
 
 
-
+quartos, clientes, reservas = carregar_dados()
 
 
 
@@ -289,7 +358,7 @@ def remover_cliente(clientes):
 
 #-----------------------------------------------FUNÇÃO PRINCIPAL------------------------------------------------
 
-def principal():
+"""def principal():
     clientes, quartos, reservas = carregar_dados()
     
     while True:
@@ -309,7 +378,7 @@ def principal():
 
 
 if __name__ == "__main__":
-    principal()
+    principal()"""
 
 
 
