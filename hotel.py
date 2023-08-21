@@ -32,7 +32,7 @@ def carregar_dados():
     
     try:
         #Exportando dados dos clientes
-        with open("./Projeto-IP/assets/clientes.csv", "r", encoding="UTF-8") as c:
+        with open("./assets/clientes.csv", "r", encoding="UTF-8") as c:
             linhas = c.readlines()
             for linha in linhas:
                 dados = linha.strip().split(',')
@@ -46,7 +46,7 @@ def carregar_dados():
                 clientes.append(cliente)
             
         #Exportando dados dos quartos        
-        with open("./Projeto-IP/assets/quartos.csv", "r", encoding="UTF-8") as q:
+        with open("./assets/quartos.csv", "r", encoding="UTF-8") as q:
             for i in q:
                 id, num, reser = i.strip().split(',')
                 quarto = {
@@ -56,7 +56,7 @@ def carregar_dados():
                 }
                 quartos.append(quarto)
         
-        with open("./Projeto-IP/assets/reservas.csv", "r", encoding="UTF-8") as r:
+        with open("./assets/reservas.csv", "r", encoding="UTF-8") as r:
             for linha in r:
                 id_reserva,id_quarto, id_cliente, check_in, check_out = linha.strip().split(',')
                 reserva = {
@@ -76,15 +76,15 @@ def carregar_dados():
 
 #------------------------------------------------SALVAR DADOS-------------------------------------------------
 def salvar_dados(quartos, clientes, reservas):
-    with open("./Projeto-IP/assets/clientes.csv", "w", encoding="UTF-8") as arquivo:
+    with open("./assets/clientes.csv", "w", encoding="UTF-8") as arquivo:
         for cliente in clientes:
              arquivo.write(f"{cliente['id']},{cliente['nome']},{cliente['idade']},{cliente['cpf']},{cliente['rg']}\n")
     
-    with open("./Projeto-IP/assets/quartos.csv", "w", encoding="UTF-8") as arquivo:  
+    with open("./assets/quartos.csv", "w", encoding="UTF-8") as arquivo:  
         for quarto in quartos:    
             arquivo.write(f"{quarto['id']},{quarto['numero']},{quarto['reservado']}\n")   
             
-    with open("./Projeto-IP/assets/reservas.csv", "w", encoding="UTF-8") as arquivo:
+    with open("./assets/reservas.csv", "w", encoding="UTF-8") as arquivo:
         for reserva in reservas:
             arquivo.write(f"{reserva['id_reserva']},{reserva['id_quarto']},{reserva['id_cliente']},{reserva['check-in']},{reserva['check-out']}\n")  
 
@@ -133,13 +133,23 @@ def fazer_reserva(quartos, clientes, reservas):
             print("OPÇÃO INVALIDA")
             continue
         break
+          
+    while True:  
+        #Perguntar ao professor se pode usar regex para verificar formatação da data
+        #Escolher Check-IN
+        check_in = str(input("INFORME A DATA DE CHECK-IN(dd/mm/aaaa): "))
             
-    #Perguntar ao professor se pode usar regex para verificar formatação da data
-    #Escolher Check-IN
-    check_in = str(input("INFORME A DATA DE CHECK-IN(dd/mm/aaaa): "))
-        
-    #Escolher Check-OUT
-    check_out = str(input("INFORME A DATA DE CHECK-OUT(dd/mm/aaaa): "))
+        #Escolher Check-OUT
+        check_out = str(input("INFORME A DATA DE CHECK-OUT(dd/mm/aaaa): "))
+    
+        dia_in, mes_in, ano_in = map(int, check_in.split('/'))
+        dia_out, mes_out, ano_out = map(int, check_out.split('/'))
+
+        if (ano_in, mes_in, dia_in) < (ano_out, mes_out, dia_out):
+            break
+        else:
+            print("O CHECK-IN TEM QUE ACONTECER ANTES DO CHECK-OUT")
+            continue
         
     #mudando status 'reservado' p/ sim
     for i in quartos:
