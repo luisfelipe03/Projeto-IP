@@ -113,6 +113,10 @@ def fazer_reserva(quartos, clientes, reservas):
             if quarto["reservado"] == 'nao':
                 quartos_disponivel.append(quarto['id'])
                 print(f"{quarto['id']} - Quarto.{quarto['numero']}")
+            
+        if len(quartos_disponivel) == 0:
+            return print("NÃO TEM MAIS QUARTOS DISPONIVEIS")
+                
         escolha_quarto = int(input("Escolha o quarto: "))
             
         if escolha_quarto not in quartos_disponivel:
