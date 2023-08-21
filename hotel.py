@@ -82,33 +82,30 @@ def salvar_dados(quartos, clientes, reservas):
     
     with open("./Projeto-IP/assets/quartos.csv", "w", encoding="UTF-8") as arquivo:  
         for quarto in quartos:    
-            arquivo.write(f"{quarto['id']},{quarto['numero']},{quarto['reservado']}")   
+            arquivo.write(f"{quarto['id']},{quarto['numero']},{quarto['reservado']}\n")   
             
     with open("./Projeto-IP/assets/reservas.csv", "w", encoding="UTF-8") as arquivo:
         for reserva in reservas:
-            arquivo.write(f"{reserva['id_reserva']},{reserva['id_quarto']},{reserva['id_cliente']},{reserva['check-in']},{reserva['check-out']}")  
+            arquivo.write(f"{reserva['id_reserva']},{reserva['id_quarto']},{reserva['id_cliente']},{reserva['check-in']},{reserva['check-out']}\n")  
 
 #-----------------------------------------------FAZER RESERVA------------------------------------------------
 def fazer_reserva(quartos, clientes, reservas):
-    while True:
-        # Verifica o ultimo ID e soma +1 para continuar a sequencia dos IDs 
-        if not reservas:
-            id = 1
-        else:
-            ultimo_dicionario = reservas[-1]
-            id = ultimo_dicionario.get("id") + 1
-            
-        # Verifica se a quartos cadastrados
-        if not quartos:
-            print("Não a quartos cadastrados")
-            break
-                
-            
-        # Verifica se a clientes cadastrados    
-        if not clientes:
-            print("Não a clientes cadastrados")
-            break
-                
+    # Verifica o ultimo ID e soma +1 para continuar a sequencia dos IDs 
+    if not reservas:
+        id = 1
+    else:
+        ultimo_dicionario = reservas[-1]
+        id = int(ultimo_dicionario.get("id_reserva")) + 1
+        
+    # Verifica se a quartos cadastrados
+    if not quartos:
+        return print("Não a quartos cadastrados")  
+        
+    # Verifica se a clientes cadastrados    
+    if not clientes:
+        return print("Não a clientes cadastrados")
+    
+    while True:      
         #Verifica quartos disponiveis 
         quartos_disponivel = []
         print("QUARTOS DISPONIVEIS:\n")
@@ -120,7 +117,10 @@ def fazer_reserva(quartos, clientes, reservas):
             
         if escolha_quarto not in quartos_disponivel:
             print("OPÇÃO INVALIDA")
-            
+            continue
+        break
+    
+    while True:        
         #Escolher cliente
         lista_clientes = []
         print('\nA RESERVA É PARA QUAL CLIENTE: \n')
@@ -131,30 +131,31 @@ def fazer_reserva(quartos, clientes, reservas):
             
         if escolha_cliente not in lista_clientes:
             print("OPÇÃO INVALIDA")
+            continue
+        break
+            
+    #Perguntar ao professor se pode usar regex para verificar formatação da data
+    #Escolher Check-IN
+    check_in = str(input("INFORME A DATA DE CHECK-IN(dd/mm/aaaa): "))
+        
+    #Escolher Check-OUT
+    check_out = str(input("INFORME A DATA DE CHECK-OUT(dd/mm/aaaa): "))
+        
+    #mudando status 'reservado' p/ sim
+    for i in quartos:
+        if i['id'] == escolha_quarto:
+            i['reservado'] = 'sim'
                 
-        #Escolher Check-IN
-        check_in = str(input("INFORME A DATA DE CHECK-IN(dd/mm/aaaa): "))
-            
-        #Escolher Check-OUT
-        check_out = str(input("INFORME A DATA DE CHECK-OUT(dd/mm/aaaa): "))
-            
-        #mudando status 'reservado' p/ sim
-        for i in quartos:
-            if i['id'] == escolha_quarto:
-                i['reservado'] = 'sim'
-                    
-        reserva = {
+    reserva = {
             "id_reserva":id,
             "id_quarto":escolha_quarto,
             "id_cliente":escolha_cliente,
             "check-in":check_in,
             "check-out":check_out
         }
-            
-        reservas.append(reserva)
-        print("Reserva feito com sucesso!")
-    print("Voltando para o menu")    
-    menu()
+        
+    reservas.append(reserva)
+    print("Reserva feito com sucesso!")
 
 #-----------------------------------------------CADASTRAR QUARTO------------------------------------------------
 
@@ -305,9 +306,8 @@ def remover_cliente(clientes):
 
 
 quartos, clientes, reservas = carregar_dados()
-
-
-
+fazer_reserva(quartos, clientes, reservas)
+salvar_dados(quartos, clientes, reservas)
 
 
 
