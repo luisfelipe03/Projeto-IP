@@ -48,24 +48,20 @@ def carregar_dados():
     return quartos, clientes, reservas
 #-=-=-=-=-==-=-=-=-=-=-=-==-=-=-=-=-==-=-=-=-==-=-=-=-=-=-=-=-=-==-=-=-=-==-=-=-=-=-==-=-=-=-=-=-==-=-=--=-==-=-=-                
 def fazer_reserva(quartos, clientes, reservas):
-    while True:
         # Verifica o ultimo ID e soma +1 para continuar a sequencia dos IDs 
         if not reservas:
             id = 1
         else:
             ultimo_dicionario = reservas[-1]
-            id = ultimo_dicionario.get("id") + 1
+            id = int(ultimo_dicionario.get("id")) + 1
         
         # Verifica se a quartos cadastrados
         if not quartos:
-            print("Não a quartos cadastrados")
-            break
-            
+            print("Não a quartos cadastrados")    
         
         # Verifica se a clientes cadastrados    
         if not clientes:
             print("Não a clientes cadastrados")
-            break
             
         #Verifica quartos disponiveis 
         quartos_disponivel = []
@@ -103,10 +99,10 @@ def fazer_reserva(quartos, clientes, reservas):
                 
         reserva = {
             "id_reserva":id,
-                    "id_quarto":escolha_quarto,
-                    "id_cliente":escolha_cliente,
-                    "check-in":check_in,
-                    "check-out":check_out
+            "id_quarto":escolha_quarto,
+            "id_cliente":escolha_cliente,
+            "check-in":check_in,
+            "check-out":check_out
         }
         
         reservas.append(reserva)
