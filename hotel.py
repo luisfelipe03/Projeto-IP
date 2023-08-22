@@ -16,15 +16,16 @@ from assets.utils.quartos.cadastrar_quarto import cadastrar_quarto
 from assets.utils.clientes.cadastrar_clientes import cadastrar_cliente
 from assets.utils.quartos.remover_quarto import remover_quarto
 from assets.utils.clientes.remover_cliente import remover_cliente
+from assets.utils.reservas.cancelar_reserva import cancelar_reserva
 
 quartos, clientes, reservas = carregar_dados()
-ver_reservas(quartos, clientes, reservas)
+cancelar_reserva(quartos, clientes, reservas)
 salvar_dados(quartos, clientes, reservas)
 
 
 # Função principal
 
-def principal():
+"""def principal():
     quartos, clientes, reservas = carregar_dados()
 
     while True:
@@ -35,7 +36,7 @@ def principal():
         elif escolha == '2':
             editar_reserva()
         elif escolha == '3':
-            cancelar_reserva()
+            cancelar_reserva(reservas)
         elif escolha == '4':
             ver_reservas(quartos, clientes, reservas)
         elif escolha == '5':
@@ -63,5 +64,5 @@ def principal():
 
 if __name__ == "__main__":
     principal()
-
+"""
 

@@ -1,8 +1,9 @@
-# Sistema de gestão de hotel
+Sistema de gestão de hotel
  
 Sistema desenvolvido para avaliação de desempenho da cadeira de introdução a programação da UFAPE.
 
-### Requisitos
+Requisitos:
+
 - Desenvolver um software para gerenciamento de ambiente comercial (ex.: pousada, controle de estoque, venda de bilhetes aéreos, etc.)
 - O software deve apresentar:
     - Menu inicial para o usuário selecionar a opção de interesse;
