@@ -1,5 +1,7 @@
 def ver_reservas(quartos, clientes, reservas):
+    qtd_reservas = 0
     for r in reservas:
+        qtd_reservas += 1
         cliente = ''
         id_cliente = -1
         id_quarto = -1
@@ -24,4 +26,6 @@ def ver_reservas(quartos, clientes, reservas):
         print(f"Check-IN - {r['check-in']}")
         print(f"Check-OUT - {r['check-out']}")
         print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
+    if qtd_reservas == 0:
+        return 0   
 

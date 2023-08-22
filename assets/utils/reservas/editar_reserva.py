@@ -13,7 +13,7 @@ def editar_reserva(quartos, clientes, reservas, id_reserva):
 
         if reserva_encontrada is None:
             print("\nReserva não encontrada.\n")
-            continue
+            break
         
 
         # Informações da reserva encontrada
@@ -43,7 +43,10 @@ def editar_reserva(quartos, clientes, reservas, id_reserva):
             lista_clientes = [cliente['id'] for cliente in clientes]
             print('\nA RESERVA AGORA É PARA QUAL CLIENTE:\n')
             for cliente in clientes:
-                print(f"{cliente['id']} - {cliente['nome']}")
+                if cliente['id'] == id_cliente_antigo:
+                    print(f"{cliente['id']} - {cliente['nome']} (atual)")
+                elif cliente['id'] != id_cliente_antigo:
+                    print(f"{cliente['id']} - {cliente['nome']}")
             escolha_cliente = int(input("Escolha o novo cliente ou mantenha o antigo: "))
 
             if escolha_cliente in lista_clientes or escolha_cliente == id_cliente_antigo:
@@ -89,5 +92,6 @@ def editar_reserva(quartos, clientes, reservas, id_reserva):
                 break
 
         print("\nReserva atualizada com sucesso!\n")
+        break
 
 

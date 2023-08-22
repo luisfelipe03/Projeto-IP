@@ -19,12 +19,6 @@ from assets.utils.clientes.cadastrar_clientes import cadastrar_cliente
 from assets.utils.quartos.remover_quarto import remover_quarto
 from assets.utils.clientes.remover_cliente import remover_cliente
 
-"""quartos, clientes, reservas = carregar_dados()
-cancelar_reserva(quartos, clientes, reservas)
-salvar_dados(quartos, clientes, reservas)"""
-
-
-# Função principal
 
 def principal():
     quartos, clientes, reservas = carregar_dados()
@@ -36,13 +30,24 @@ def principal():
         if escolha == '1':
             fazer_reserva(quartos, clientes, reservas)
         elif escolha == '2':
-            ver_reservas(quartos, clientes, reservas)
+            i = ver_reservas(quartos, clientes, reservas)
+            if i == 0:
+                print("\nNÃO TEM RESERVAS NO SISTEMA\n")
+                continue
             id_reserva = int(input("Digite o ID da reserva que deseja editar(Ou digite 0 para voltar ao menu): "))
             editar_reserva(quartos, clientes, reservas, id_reserva)
         elif escolha == '3':
-            cancelar_reserva(quartos, clientes,reservas)
+            i = ver_reservas(quartos, clientes, reservas)
+            if i == 0:
+                print("\nNÃO TEM RESERVAS NO SISTEMA\n")
+                continue
+            id_reserva = int(input("Digite o ID da reserva que deseja cancelar(Ou digite 0 para voltar ao menu): "))
+            cancelar_reserva(reservas, quartos, id_reserva)
         elif escolha == '4':
-            ver_reservas(quartos, clientes, reservas)
+            i = ver_reservas(quartos, clientes, reservas)
+            if i == 0:
+                print("\nNÃO TEM RESERVAS NO SISTEMA\n")
+                continue
         elif escolha == '5':
             cadastrar_quarto(quartos)
         elif escolha == '6':
