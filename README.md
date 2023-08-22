@@ -21,7 +21,8 @@
 	- [x] Fazer reserva
 	- [x] Editar reserva 
 	- [x] Cancelar reserva
-	- [x] Ver todos as reservas 
+	- [x] Ver todos as reservas
+	- [ ] Buscar reserva por Número de quarto/Nome de cliente 
 
 1. Funções de quarto:
 	- [x] Cadastrar quarto
