@@ -12,11 +12,12 @@ from assets.utils.carregar_dados import carregar_dados
 from assets.utils.salvar_dados import salvar_dados
 from assets.utils.reservas.fazer_reserva import fazer_reserva
 from assets.utils.reservas.ver_reservas import ver_reservas
+from assets.utils.reservas.editar_reserva import editar_reserva
+from assets.utils.reservas.cancelar_reserva import cancelar_reserva
 from assets.utils.quartos.cadastrar_quarto import cadastrar_quarto
 from assets.utils.clientes.cadastrar_clientes import cadastrar_cliente
 from assets.utils.quartos.remover_quarto import remover_quarto
 from assets.utils.clientes.remover_cliente import remover_cliente
-from assets.utils.reservas.cancelar_reserva import cancelar_reserva
 
 """quartos, clientes, reservas = carregar_dados()
 cancelar_reserva(quartos, clientes, reservas)
@@ -35,10 +36,11 @@ def principal():
         if escolha == '1':
             fazer_reserva(quartos, clientes, reservas)
         elif escolha == '2':
-            #editar_reserva()
-            print("\nEM DESENVOLVIMENTO...\n")
+            ver_reservas(quartos, clientes, reservas)
+            id_reserva = int(input("Digite o ID da reserva que deseja editar(Ou digite 0 para voltar ao menu): "))
+            editar_reserva(quartos, clientes, reservas, id_reserva)
         elif escolha == '3':
-            cancelar_reserva(reservas)
+            cancelar_reserva(quartos, clientes,reservas)
         elif escolha == '4':
             ver_reservas(quartos, clientes, reservas)
         elif escolha == '5':
