@@ -1,4 +1,5 @@
 def carregar_dados():
+    # 
     clientes = []
     quartos = []
     reservas = []
@@ -43,6 +44,4 @@ def carregar_dados():
                 reservas.append(reserva)
     except FileNotFoundError:
         print("Arquivo não encontrado")
-    except Exception as e:
-        print(f"Erro ao carregar os dados: {e}")
     return quartos, clientes, reservas
