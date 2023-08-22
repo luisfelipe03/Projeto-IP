@@ -18,7 +18,7 @@ from assets.utils.quartos.remover_quarto import remover_quarto
 from assets.utils.clientes.remover_cliente import remover_cliente
 
 quartos, clientes, reservas = carregar_dados()
-
+ver_reservas(quartos, clientes, reservas)
 salvar_dados(quartos, clientes, reservas)
 
 

@@ -28,7 +28,8 @@ def fazer_reserva(quartos, clientes, reservas):
             return print("\nNÃO HÁ MAIS QUARTOS DISPONÍVEIS\n")
                 
         escolha_quarto = int(input("Escolha o quarto: "))
-            
+          
+        #Verifica se a escolha_quarto é valida   
         if escolha_quarto not in quartos_disponiveis:
             print("OPÇÃO INVÁLIDA\n")
             continue
@@ -43,6 +44,7 @@ def fazer_reserva(quartos, clientes, reservas):
             print(f"{cliente['id']} - {cliente['nome']}")
         escolha_cliente = int(input("Escolha o cliente: "))
             
+        #Verifica se escolha_cliente é valida
         if escolha_cliente not in lista_clientes:
             print("OPÇÃO INVÁLIDA\n")
             continue
@@ -74,7 +76,8 @@ def fazer_reserva(quartos, clientes, reservas):
     for i in quartos:
         if i['id'] == escolha_quarto:
             i['reservado'] = 'sim'
-                
+       
+    #Criando o dicionario para armazenas os dados da reserva          
     reserva = {
         "id_reserva": id,
         "id_quarto": escolha_quarto,
@@ -82,6 +85,7 @@ def fazer_reserva(quartos, clientes, reservas):
         "check-in": check_in,
         "check-out": check_out
     }
-        
+       
+    #Adicionado reserva a lista de reservas    
     reservas.append(reserva)
     print("\nReserva feita com sucesso!\n")
