@@ -17,7 +17,6 @@ from assets.utils.clientes.cadastrar_clientes import cadastrar_cliente
 from assets.utils.quartos.remover_quarto import remover_quarto
 from assets.utils.clientes.remover_cliente import remover_cliente
 from assets.utils.reservas.cancelar_reserva import cancelar_reserva
-import os
 
 """quartos, clientes, reservas = carregar_dados()
 cancelar_reserva(quartos, clientes, reservas)
