@@ -23,37 +23,45 @@ salvar_dados(quartos, clientes, reservas)
 
 
 # Função principal
-"""
+
 def principal():
-    quartos, clientes = carregar_dados()
+    quartos, clientes, reservas = carregar_dados()
 
     while True:
-        escolha = mostrar_menu()
+        escolha = menu()
 
         if escolha == '1':
-            cadastrar_quarto(quartos)
+            fazer_reserva(quartos, clientes, reservas)
         elif escolha == '2':
-            cadastrar_cliente(clientes)
+            editar_reserva()
         elif escolha == '3':
-            editar_quarto(quartos)
+            cancelar_reserva()
         elif escolha == '4':
-            editar_cliente(clientes)
+            ver_reservas(quartos, clientes, reservas)
         elif escolha == '5':
-            remover_quarto(quartos)
+            cadastrar_quarto(quartos)
         elif escolha == '6':
-            remover_cliente(clientes)
+            cadastrar_cliente(clientes)
         elif escolha == '7':
-            buscar_quarto(quartos)
+            editar_quarto(quartos)
         elif escolha == '8':
-            buscar_cliente(clientes)
+            editar_cliente(clientes)
         elif escolha == '9':
-            salvar_dados(quartos, clientes)
+            remover_quarto(quartos)
+        elif escolha == '10':
+            remover_cliente(clientes)
+        elif escolha == '11':
+            buscar_quarto(quartos)
+        elif escolha == '12':
+            buscar_cliente(clientes)
+        elif escolha == '0':
+            salvar_dados(quartos, clientes, reservas)
             print("Dados salvos. Saindo...")
             break
         else:
             print("Opção inválida. Tente novamente.")
 
 if __name__ == "__main__":
-    principal()"""
+    principal()
 
 
