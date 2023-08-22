@@ -26,12 +26,16 @@ def fazer_reserva(quartos, clientes, reservas):
         #Verifica se há quartos disponiveis, se não houver a função é cancelada
         if len(quartos_disponiveis) == 0:
             return print("\nNÃO HÁ MAIS QUARTOS DISPONÍVEIS\n")
-                
-        escolha_quarto = int(input("Escolha o quarto: "))
+        
+        try:      
+            escolha_quarto = int(input("Escolha o quarto: "))
+        except ValueError:
+            print('\033[31m' + 'OPÇÃO INVÁLIDA!' + '\033[0;0m\n')
+            continue
           
         #Verifica se a escolha_quarto é valida   
         if escolha_quarto not in quartos_disponiveis:
-            print("OPÇÃO INVÁLIDA\n")
+            print('\033[31m' + 'OPÇÃO INVÁLIDA!' + '\033[0;0m\n')
             continue
         break
     
@@ -42,7 +46,12 @@ def fazer_reserva(quartos, clientes, reservas):
         for cliente in clientes:
             lista_clientes.append(cliente['id'])
             print(f"{cliente['id']} - {cliente['nome']}")
-        escolha_cliente = int(input("Escolha o cliente: "))
+            
+        try:
+            escolha_cliente = int(input("Escolha o cliente: "))
+        except ValueError:
+            print('OPÇÃO INVÁLIDA!\n')
+            continue
             
         #Verifica se escolha_cliente é valida
         if escolha_cliente not in lista_clientes:
