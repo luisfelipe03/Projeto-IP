@@ -17,24 +17,27 @@ from assets.utils.clientes.cadastrar_clientes import cadastrar_cliente
 from assets.utils.quartos.remover_quarto import remover_quarto
 from assets.utils.clientes.remover_cliente import remover_cliente
 from assets.utils.reservas.cancelar_reserva import cancelar_reserva
+import os
 
-quartos, clientes, reservas = carregar_dados()
+"""quartos, clientes, reservas = carregar_dados()
 cancelar_reserva(quartos, clientes, reservas)
-salvar_dados(quartos, clientes, reservas)
+salvar_dados(quartos, clientes, reservas)"""
 
 
 # Função principal
 
-"""def principal():
+def principal():
     quartos, clientes, reservas = carregar_dados()
 
     while True:
+        print("\n-=-=-=-=-=-=-=-=-=-=-=Bates Motel=-=-=-=-=-=-=-=-=-=-=-=\n")
         escolha = menu()
 
         if escolha == '1':
             fazer_reserva(quartos, clientes, reservas)
         elif escolha == '2':
-            editar_reserva()
+            #editar_reserva()
+            print("\nEM DESENVOLVIMENTO...\n")
         elif escolha == '3':
             cancelar_reserva(reservas)
         elif escolha == '4':
@@ -44,17 +47,21 @@ salvar_dados(quartos, clientes, reservas)
         elif escolha == '6':
             cadastrar_cliente(clientes)
         elif escolha == '7':
-            editar_quarto(quartos)
+            #editar_quarto(quartos)
+            print("\nEM DESENVOLVIMENTO...\n")
         elif escolha == '8':
-            editar_cliente(clientes)
+            #editar_cliente(clientes)
+            print("\nEM DESENVOLVIMENTO...\n")
         elif escolha == '9':
             remover_quarto(quartos)
         elif escolha == '10':
             remover_cliente(clientes)
         elif escolha == '11':
-            buscar_quarto(quartos)
+            #buscar_quarto(quartos)
+            print("\nEM DESENVOLVIMENTO...\n")
         elif escolha == '12':
-            buscar_cliente(clientes)
+            #buscar_cliente(clientes)
+            print("\nEM DESENVOLVIMENTO...\n")
         elif escolha == '0':
             salvar_dados(quartos, clientes, reservas)
             print("Dados salvos. Saindo...")
@@ -64,5 +71,5 @@ salvar_dados(quartos, clientes, reservas)
 
 if __name__ == "__main__":
     principal()
-"""
+
 
