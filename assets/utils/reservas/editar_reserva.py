@@ -1,27 +1,25 @@
 def editar_reserva(quartos, clientes, reservas, id_reserva):
+    reserva_encontrada = None
     while True:
         
         if id_reserva == 0:
             return print('Voltando para o menu...')
             
         # Verificar se a reserva existe pelo id_reserva fornecido
-        reserva_encontrada = None
         for reserva in reservas:
             if reserva["id_reserva"] == id_reserva:
                 reserva_encontrada = reserva
                 break
-
-        if reserva_encontrada is None:
-            print("\nReserva não encontrada.\n")
-            break
         
-
+        if reserva_encontrada is None:
+            return print("\nReserva não encontrada.\n")
+        
         # Informações da reserva encontrada
         id_quarto_antigo = reserva_encontrada["id_quarto"]
         id_cliente_antigo = reserva_encontrada["id_cliente"]
         check_in_antigo = reserva_encontrada["check-in"]
         check_out_antigo = reserva_encontrada["check-out"]
-
+            
         while True:
             # Escolher novo quarto ou manter o antigo
             quartos_disponiveis = [quarto['id'] for quarto in quartos if quarto["reservado"] == 'nao' or quarto["id"] == id_quarto_antigo]
