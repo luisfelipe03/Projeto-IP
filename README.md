@@ -32,11 +32,33 @@
 1. Funções do cliente:
 	- [x] Cadastrar cliente
 	- [ ] Editar cadastro de cliente
-	- [ ] Excluir cadastro de cliente
+	- [x] Excluir cadastro de cliente
 	- [ ] Buscar cliente por ID/Nome
 
 1. Outras funções:
+ 	- [x] Mostar menu 
 	- [x] Carregar dados do arquivo .CSV
 	- [x] Salvar dados no arquivo .CSV
-	- [x] Mostar menu 
+	
+
+<h3>Atributos das "classe"... :</h3>
+
+- Reserva:
+	+ ID da reserva
+	+ ID do cliente
+	+ ID do quarto
+	+ Check-IN
+	+ Check-OUT
+
+- Quarto:
+	+ ID do quarto
+	+ Número do quarto
+	+ Status de reserva: "sim" ou "nao"
+
+- Cliente:
+	+ ID do cliente
+	+ Nome do cliente
+	+ Idade do cliente
+	+ CPF
+	+ RG
 

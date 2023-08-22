@@ -4,7 +4,7 @@ SISTEMA DE GESTÃO DE HOTEL
 Desenvolvedores: Luis Felipe de Oliveira Andrade
                  Phylypy Cabral de Lima Tavares 
 
-Para mais informações sobre o sistema leia o arquivo README.txt
+Para mais informações sobre o sistema leia o arquivo README.md
 '''
 
 from assets.utils.menu import menu 
