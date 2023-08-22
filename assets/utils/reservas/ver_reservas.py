@@ -18,7 +18,7 @@ def ver_reservas(quartos, clientes, reservas):
                 num_quarto = q['numero']
             
         # Imprimir os detalhes da reserva
-        print(f"ID da reserva - {r['id_reserva']}")
+        print(f"\nID da reserva - {r['id_reserva']}")
         print(f"Quarto - ID do quarto = {id_quarto} / Número do quarto = {num_quarto}")
         print(f"Cliente - ID do cliente = {id_cliente} / Nome do cliente = {cliente}")
         print(f"Check-IN - {r['check-in']}")

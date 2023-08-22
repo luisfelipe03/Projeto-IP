@@ -1,27 +1,27 @@
-def remover_cliente(clientes): 
-    while True: 
-        print("------QUAL CLIENTE VOCÊ DESEJA REMOVER ?------\n")
+def remover_cliente(clientes):
+    while True:
+        print("------QUAL CLIENTE VOCÊ DESEJA REMOVER?------\n")  # Exibe o cabeçalho para remover um cliente
         for i in clientes:
+            # Exibe as informações de cada cliente na lista
             print(f"ID = {i['id']}\nNome = {i['nome']}\nRG = {i['rg']}")
             print("-=-=-=-=-=-=-=-=-=-=-=-=-=")
             
         try:
-            escolha = int(input("Digite o ID do cliente que você quer remover (ou 0 para voltar ao menu): "))
+            escolha = int(input("Digite o ID do cliente que você deseja remover (ou 0 para voltar ao menu): "))
             
             if escolha == 0:
-                break  
-              
+                break  # Sai do loop caso o usuário escolha 0
+            
             cliente_encontrado = None
             for cliente in clientes:
                 if cliente['id'] == escolha:
-                    cliente_encontrado = cliente
-                    break
-                        
+                    cliente_encontrado = cliente  # Armazena o cliente encontrado
+                    break  # Sai do loop ao encontrar o cliente desejado
+                    
             if cliente_encontrado:
-                clientes.remove(cliente_encontrado)
+                clientes.remove(cliente_encontrado)  # Remove o cliente encontrado da lista
                 print(f"Cliente com ID {escolha} removido com sucesso.")
             else:
                 print(f"Nenhum cliente cadastrado com ID {escolha}.")
         except ValueError:
-            print("Opção inválida!")
-
+            print("Opção inválida!")  # Trata exceção se o usuário inserir um valor inválido
