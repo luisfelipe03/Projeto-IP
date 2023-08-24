@@ -7,8 +7,11 @@ def editar_cliente(clientes):
         print(f"RG - {cliente['rg']}")
         print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
     
-    id_busca = int(input("Digite o ID do cliente que deseja editar: "))
+    id_busca = int(input("Digite o ID do cliente que deseja editar(Ou digite 0 para voltar ao menu): "))
 
+    if id_busca == 0:
+        return print("Voltando ao menu...")
+    
     cliente_encontrado = None
     for cliente in clientes:
         if cliente["id"] == id_busca:
