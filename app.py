@@ -17,6 +17,7 @@ from assets.utils.reservas.cancelar_reserva import cancelar_reserva
 from assets.utils.quartos.cadastrar_quarto import cadastrar_quarto
 from assets.utils.clientes.cadastrar_clientes import cadastrar_cliente
 from assets.utils.quartos.editar_quarto import editar_quarto
+from assets.utils.clientes.editar_cliente import editar_cliente
 from assets.utils.quartos.remover_quarto import remover_quarto
 from assets.utils.clientes.remover_cliente import remover_cliente
 
@@ -56,8 +57,7 @@ def principal():
         elif escolha == '7':
             editar_quarto(quartos)
         elif escolha == '8':
-            #editar_cliente(clientes)
-            print("\nEM DESENVOLVIMENTO...\n")
+            editar_cliente(clientes)
         elif escolha == '9':
             remover_quarto(quartos)
         elif escolha == '10':
