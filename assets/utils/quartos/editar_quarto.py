@@ -1,6 +1,6 @@
 from assets.utils.quartos.cadastrar_quarto import verifica_numero_existente_quarto
 
-def editar_quarto(quartos, reservas):
+def editar_quarto(quartos):
     numero = int(input("Digite o número do quarto que você deseja editar: "))
     
     quarto_encontrado = None
