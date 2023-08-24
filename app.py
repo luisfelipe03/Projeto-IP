@@ -12,7 +12,7 @@ from assets.utils.carregar_dados import carregar_dados
 from assets.utils.salvar_dados import salvar_dados
 from assets.utils.reservas.fazer_reserva import fazer_reserva
 from assets.utils.reservas.ver_reservas import ver_reservas
-from assets.utils.reservas.editar_reserva import editar_reserva1
+from assets.utils.reservas.editar_reserva import editar_reserva
 from assets.utils.reservas.cancelar_reserva import cancelar_reserva
 from assets.utils.quartos.cadastrar_quarto import cadastrar_quarto
 from assets.utils.clientes.cadastrar_clientes import cadastrar_cliente
