@@ -50,22 +50,25 @@ def principal():
             if i == 0:
                 print("\nNÃO TEM RESERVAS NO SISTEMA\n")
                 continue
-        elif escolha == '5':
-            cadastrar_quarto(quartos)
+        elif escolha == "5":
+            #buscar_reserva()
+            print("\nEM DESENVOLVIMENTO...\n")
         elif escolha == '6':
-            cadastrar_cliente(clientes)
+            cadastrar_quarto(quartos)
         elif escolha == '7':
-            editar_quarto(quartos)
+            cadastrar_cliente(clientes)
         elif escolha == '8':
-            editar_cliente(clientes)
+            editar_quarto(quartos)
         elif escolha == '9':
-            remover_quarto(quartos)
+            editar_cliente(clientes)
         elif escolha == '10':
-            remover_cliente(clientes)
+            remover_quarto(quartos)
         elif escolha == '11':
+            remover_cliente(clientes)
+        elif escolha == '12':
             #buscar_quarto(quartos)
             print("\nEM DESENVOLVIMENTO...\n")
-        elif escolha == '12':
+        elif escolha == '13':
             #buscar_cliente(clientes)
             print("\nEM DESENVOLVIMENTO...\n")
         elif escolha == '0':
