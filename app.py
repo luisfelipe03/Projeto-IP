@@ -17,6 +17,7 @@ from assets.utils.reservas.cancelar_reserva import cancelar_reserva
 from assets.utils.quartos.cadastrar_quarto import cadastrar_quarto
 from assets.utils.clientes.cadastrar_clientes import cadastrar_cliente
 from assets.utils.quartos.buscar_quarto import buscar_quarto
+from assets.utils.clientes.buscar_cliente import buscar_cliente
 from assets.utils.quartos.editar_quarto import editar_quarto
 from assets.utils.clientes.editar_cliente import editar_cliente
 from assets.utils.quartos.remover_quarto import remover_quarto
@@ -69,8 +70,7 @@ def principal():
         elif escolha == '12':
             buscar_quarto(quartos)
         elif escolha == '13':
-            #buscar_cliente(clientes)
-            print("\nEM DESENVOLVIMENTO...\n")
+            buscar_cliente(clientes)
         elif escolha == '0':
             salvar_dados(quartos, clientes, reservas)
             print("Dados salvos. Saindo...")
