@@ -2,14 +2,17 @@ from assets.utils.clientes.cadastrar_clientes import verifica_cpf_existente_clie
 
 def editar_cliente(clientes):
     for cliente in clientes:
+        #Azul os 3 primeiros prints
         print(f"ID - {cliente['id']}")
         print(f"Nome - {cliente['nome']}")
         print(f"RG - {cliente['rg']}")
         print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
     
+    #Verde até o parênteses e dentro do parêntese azul para destacar a opção de voltar ao menu 
     id_busca = int(input("Digite o ID do cliente que deseja editar(Ou digite 0 para voltar ao menu): "))
 
     if id_busca == 0:
+        #Verde
         return print("Voltando ao menu...")
     
     cliente_encontrado = None

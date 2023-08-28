@@ -16,6 +16,7 @@ from assets.utils.reservas.editar_reserva import editar_reserva
 from assets.utils.reservas.cancelar_reserva import cancelar_reserva
 from assets.utils.quartos.cadastrar_quarto import cadastrar_quarto
 from assets.utils.clientes.cadastrar_clientes import cadastrar_cliente
+from assets.utils.quartos.buscar_quarto import buscar_quarto
 from assets.utils.quartos.editar_quarto import editar_quarto
 from assets.utils.clientes.editar_cliente import editar_cliente
 from assets.utils.quartos.remover_quarto import remover_quarto
@@ -26,7 +27,7 @@ def principal():
     quartos, clientes, reservas = carregar_dados()
 
     while True:
-        print("\n-=-=-=-=-=-=-=-=-=-=-=Bates Motel=-=-=-=-=-=-=-=-=-=-=-=\n")
+        print("\n-=-=-=-=-=-=-=-=-=-=-=Bates Motel=-=-=-=-=-=-=-=-=-=-=-=-\n")
         escolha = menu()
 
         if escolha == '1':
@@ -66,8 +67,7 @@ def principal():
         elif escolha == '11':
             remover_cliente(clientes)
         elif escolha == '12':
-            #buscar_quarto(quartos)
-            print("\nEM DESENVOLVIMENTO...\n")
+            buscar_quarto(quartos)
         elif escolha == '13':
             #buscar_cliente(clientes)
             print("\nEM DESENVOLVIMENTO...\n")
