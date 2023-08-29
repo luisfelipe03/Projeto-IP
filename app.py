@@ -18,6 +18,7 @@ from assets.utils.quartos.cadastrar_quarto import cadastrar_quarto
 from assets.utils.clientes.cadastrar_clientes import cadastrar_cliente
 from assets.utils.quartos.buscar_quarto import buscar_quarto
 from assets.utils.clientes.buscar_cliente import buscar_cliente
+from assets.utils.reservas.buscar_reserva import buscar_reserva
 from assets.utils.quartos.editar_quarto import editar_quarto
 from assets.utils.clientes.editar_cliente import editar_cliente
 from assets.utils.quartos.remover_quarto import remover_quarto
@@ -37,24 +38,29 @@ def principal():
             i = ver_reservas(quartos, clientes, reservas)
             if i == 0:
                 print("\nNÃO TEM RESERVAS NO SISTEMA\n")
-                continue
             id_reserva = int(input("Digite o ID da reserva que deseja editar(Ou digite 0 para voltar ao menu): "))
             editar_reserva(quartos, clientes, reservas, id_reserva)
         elif escolha == '3':
             i = ver_reservas(quartos, clientes, reservas)
             if i == 0:
                 print("\nNÃO TEM RESERVAS NO SISTEMA\n")
-                continue
             id_reserva = int(input("Digite o ID da reserva que deseja cancelar(Ou digite 0 para voltar ao menu): "))
             cancelar_reserva(reservas, quartos, id_reserva)
         elif escolha == '4':
             i = ver_reservas(quartos, clientes, reservas)
             if i == 0:
                 print("\nNÃO TEM RESERVAS NO SISTEMA\n")
-                continue
         elif escolha == "5":
-            #buscar_reserva()
-            print("\nEM DESENVOLVIMENTO...\n")
+            reservas_encontradas = buscar_reserva(reservas, quartos, clientes)
+
+            if reservas_encontradas:
+                print("Detalhes encontrados:")
+                for detalhes in reservas_encontradas:
+                    print("-" * 40)
+                    for key, value in detalhes.items():
+                        print(f"{key}: {value}")
+            else:
+                print("Nenhum detalhe encontrado.")
         elif escolha == '6':
             cadastrar_quarto(quartos)
         elif escolha == '7':

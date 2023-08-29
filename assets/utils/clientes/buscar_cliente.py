@@ -25,22 +25,23 @@ def buscar_cliente(clientes):
     while True:
         try:    
             # Solicita ao usuário que escolha o tipo de busca (ID ou nome)
-            escolha_busca = int(input("Digite (1) para buscar pelo ID do cliente\nOu digite (2) para buscar pelo nome do cliente: "))
+            escolha_busca = int(input("Digite (1) para buscar pelo ID do cliente\nOu digite (2) para buscar pelo nome do cliente(Ou (0) para voltar ao menu): "))
             break
         except ValueError:
             # Mensagem de erro em caso de entrada inválida
             print("OPÇÃO INVÁLIDA!")
             continue
-    
-    if escolha_busca == 1: 
+    if escolha_busca == 0:
+        return print("Voltando para o menu...")
+    elif escolha_busca == 1: 
         # Busca por ID
         id_cliente = int(input("Digite o ID do cliente: "))
         cli = buscar_cliente_id(clientes, id_cliente)
         if cli != None:
             # Exibe os detalhes do cliente encontrado
-            print("\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
+            print("\n-=" * 15)
             print(f"ID - {cli['id']}\nNome - {cli['nome']}\nIdade - {cli['idade']}\nCPF - {cli['cpf']}\nRG - {cli['rg']}")
-            print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
+            print("-=\n" * 15)
         else:
             # Mensagem se o cliente não for encontrado pelo ID
             print(f"Cliente com ID = {id_cliente} não encontrado")
@@ -54,13 +55,15 @@ def buscar_cliente(clientes):
                 # Se mais de um cliente com o nome for encontrado, lista todos
                 print("Clientes encontrados com o nome:")
                 for i in n_cli:
+                    print("\n-=" * 15)
                     print(f"{ordem} - Nome: {i['nome']} / RG - {i['rg']}")
+                    print("-=\n" * 15)
                     ordem += 1
             else:
                 # Exibe os detalhes de um cliente encontrado pelo nome
-                print("\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
+                print("\n-=" * 15)
                 print(f"ID - {n_cli[0]['id']}\nNome - {n_cli[0]['nome']}\nIdade - {n_cli[0]['idade']}\nCPF - {n_cli[0]['cpf']}\nRG - {n_cli[0]['rg']}")
-                print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
+                print("-=\n" * 15)
         else:
             # Mensagem se nenhum cliente for encontrado pelo nome
             print(f"Cliente com nome = {nome_cliente} não encontrado")
