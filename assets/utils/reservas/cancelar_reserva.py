@@ -24,4 +24,4 @@ def cancelar_reserva(reservas, quartos, id_reserva):
     # Remover a reserva da lista de reservas
     reservas.remove(reserva_encontrada)
 
-    print("\nReserva cancelada com sucesso.\n")
+    print('\033[32m' +"\nReserva cancelada com sucesso.\n" + '\033[0;0m')

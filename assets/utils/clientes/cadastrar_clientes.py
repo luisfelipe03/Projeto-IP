@@ -12,7 +12,11 @@ def verifica_cpf_existente_cliente(cpf, clientes):
 
 def cadastrar_cliente(clientes):
     #Verde
-    nome = input("Nome do cliente: ")
+    nome = input("Nome do cliente(Ou digite 0 para voltar ao menu): ")
+    
+    if '0' == nome: 
+        return print("Voltando ao menu...")
+    
     #Verde
     idade = input("Idade do cliente: ")
     
@@ -20,7 +24,7 @@ def cadastrar_cliente(clientes):
         rg = input("RG do cliente: ")
         if verifica_rg_existente_cliente(rg, clientes):
             #Vermelho
-            print(f"Já existe cliente cadastrado com esse RG: {rg}")
+            print('\033[31m' + f"Já existe cliente cadastrado com esse RG: {rg}" + '\033[0;0m')
         else:
             break
 
@@ -28,7 +32,7 @@ def cadastrar_cliente(clientes):
         cpf = input("CPF do cliente: ")
         if verifica_cpf_existente_cliente(cpf, clientes):
             #Vermelho
-            print(f"Já existe cliente cadastrado com CPF: {cpf}")
+            print('\033[31m' + f"Já existe cliente cadastrado com CPF: {cpf}" + '\033[0;0m')
         else:
             break
         
@@ -48,4 +52,4 @@ def cadastrar_cliente(clientes):
 
     clientes.append(cliente)
     #Verde
-    print("Cliente cadastrado com sucesso!")
+    print('\033[32m' + "Cliente cadastrado com sucesso!" + '\033[0;0m')

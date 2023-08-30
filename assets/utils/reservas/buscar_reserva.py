@@ -12,7 +12,7 @@ def buscar_reserva(reservas, quartos, clientes):
         opcao_busca = "id_quarto"
         valor_busca = int(input("Digite o ID do quarto: "))
     else:
-        print("Opção inválida.")
+        print('\033[31m' + "Opção inválida." + '\033[0;0m')
         return []
 
     detalhes_encontrados = []

@@ -29,7 +29,7 @@ def buscar_cliente(clientes):
             break
         except ValueError:
             # Mensagem de erro em caso de entrada inválida
-            print("OPÇÃO INVÁLIDA!")
+            print('\033[31m' + "OPÇÃO INVÁLIDA!" )
             continue
     if escolha_busca == 0:
         return print("Voltando para o menu...")
@@ -39,9 +39,9 @@ def buscar_cliente(clientes):
         cli = buscar_cliente_id(clientes, id_cliente)
         if cli != None:
             # Exibe os detalhes do cliente encontrado
-            print("\n-=" * 15)
+            print("\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
             print(f"ID - {cli['id']}\nNome - {cli['nome']}\nIdade - {cli['idade']}\nCPF - {cli['cpf']}\nRG - {cli['rg']}")
-            print("-=\n" * 15)
+            print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
         else:
             # Mensagem se o cliente não for encontrado pelo ID
             print(f"Cliente com ID = {id_cliente} não encontrado")
@@ -55,17 +55,17 @@ def buscar_cliente(clientes):
                 # Se mais de um cliente com o nome for encontrado, lista todos
                 print("Clientes encontrados com o nome:")
                 for i in n_cli:
-                    print("\n-=" * 15)
+                    print("\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
                     print(f"{ordem} - Nome: {i['nome']} / RG - {i['rg']}")
-                    print("-=\n" * 15)
+                    print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
                     ordem += 1
             else:
                 # Exibe os detalhes de um cliente encontrado pelo nome
-                print("\n-=" * 15)
+                print("\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
                 print(f"ID - {n_cli[0]['id']}\nNome - {n_cli[0]['nome']}\nIdade - {n_cli[0]['idade']}\nCPF - {n_cli[0]['cpf']}\nRG - {n_cli[0]['rg']}")
-                print("-=\n" * 15)
+                print("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n")
         else:
             # Mensagem se nenhum cliente for encontrado pelo nome
-            print(f"Cliente com nome = {nome_cliente} não encontrado")
+            print('\033[31m' + f"Cliente com nome = {nome_cliente} não encontrado" + '\033[0;0m')
 
 

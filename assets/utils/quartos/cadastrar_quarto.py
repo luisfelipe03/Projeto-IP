@@ -19,11 +19,11 @@ def cadastrar_quarto(quartos):
         try:
             numero = int(input("Número do quarto: "))
             if verifica_numero_existente_quarto(numero, quartos):
-                print(f"Já existe um quarto cadastrado com esse número: {numero}")
+                print('\033[31m' + f"Já existe um quarto cadastrado com esse número: {numero}" + '\033[0;0m')
                 continue
             break
         except ValueError:
-            print("O número do quarto deve ser um número inteiro")
+            print('\033[31m' + "O número do quarto deve ser um número inteiro" + '\033[0;0m')
 
     # Cria um dicionário para o novo quarto
     quarto = {
@@ -34,6 +34,6 @@ def cadastrar_quarto(quartos):
 
     # Adiciona o dicionário à lista de quartos
     quartos.append(quarto)
-    print("Quarto cadastrado com sucesso!")
+    print('\033[32m' + "Quarto cadastrado com sucesso!" + '\033[0;0m')
 
 

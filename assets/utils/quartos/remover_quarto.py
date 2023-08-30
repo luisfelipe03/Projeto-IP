@@ -30,4 +30,4 @@ def remover_quarto(quartos):
             else:
                 print(f"\nNenhum quarto cadastrado com ID {escolha}.\n")
         except ValueError:
-            print("\nOpção inválida! Por favor, digite um valor numérico.\n")
+            print('\033[31m' + "\nOpção inválida! Por favor, digite um valor numérico.\n" + '\033[0;0m')

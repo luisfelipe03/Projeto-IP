@@ -33,7 +33,7 @@ def editar_cliente(clientes):
                     cliente_encontrado["rg"] = novo_rg
                     break
                 else:
-                    print(f"Já existe cliente cadastrado com esse RG: {novo_rg}")
+                    print('\033[33m' +  f"Já existe cliente cadastrado com esse RG: {novo_rg}" + '\033[0;0m')
                     continue
 
             while True:
@@ -45,8 +45,8 @@ def editar_cliente(clientes):
                     print(f"Já existe cliente cadastrado com CPF: {novo_cpf}")
                     continue
             
-            print("Cliente editado com sucesso!")
+            print('\033[32m' + "Cliente editado com sucesso!" + '\033[0;0m')
             break
         else:
-            print(f"Cliente com ID {id_busca} não encontrado.")
+            print('\033[33m' + f"Cliente com ID {id_busca} não encontrado." + '\033[0;0m')
             continue

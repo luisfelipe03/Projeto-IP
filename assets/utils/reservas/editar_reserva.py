@@ -3,8 +3,8 @@ def editar_reserva(quartos, clientes, reservas, id_reserva):
     while True:
         
         if id_reserva == 0:
-            return print('Voltando para o menu...')
-            
+            return print('\033[31m' + 'Voltando para o menu...' + '\033[0;0m')
+            + '\033[0;0m'
         # Verificar se a reserva existe pelo id_reserva fornecido
         for reserva in reservas:
             if reserva["id_reserva"] == id_reserva:
@@ -12,7 +12,7 @@ def editar_reserva(quartos, clientes, reservas, id_reserva):
                 break
         
         if reserva_encontrada is None:
-            return print("\nReserva não encontrada.\n")
+            return print('\033[31m' + "\nReserva não encontrada.\n" +'\033[0;0m')
         
         # Informações da reserva encontrada
         id_quarto_antigo = reserva_encontrada["id_quarto"]
@@ -34,7 +34,7 @@ def editar_reserva(quartos, clientes, reservas, id_reserva):
             if escolha_quarto in quartos_disponiveis or escolha_quarto == id_quarto_antigo:
                 break
             else:
-                print("Opção inválida.\n")
+                print('\033[31m' + "Opção inválida.\n" + '\033[0;0m')
 
         while True:
             # Escolher novo cliente ou manter o antigo
@@ -50,7 +50,7 @@ def editar_reserva(quartos, clientes, reservas, id_reserva):
             if escolha_cliente in lista_clientes or escolha_cliente == id_cliente_antigo:
                 break
             else:
-                print("Opção inválida.\n")
+                print('\033[31m' + "Opção inválida.\n"+ '\033[0;0m')
 
         while True:
             # Escolher novo Check-IN ou manter o antigo
@@ -89,7 +89,7 @@ def editar_reserva(quartos, clientes, reservas, id_reserva):
                 quarto['reservado'] = 'sim'
                 break
 
-        print("\nReserva atualizada com sucesso!\n")
+        print('\033[31m' + "\nReserva atualizada com sucesso!\n" + '\033[0;0m')
         break
 
 

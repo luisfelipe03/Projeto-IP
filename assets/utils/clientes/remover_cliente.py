@@ -20,8 +20,8 @@ def remover_cliente(clientes):
                     
             if cliente_encontrado:
                 clientes.remove(cliente_encontrado)  # Remove o cliente encontrado da lista
-                print(f"Cliente com ID {escolha} removido com sucesso.")
+                print('\033[33m' + f"Cliente com ID {escolha} removido com sucesso." + '\033[0;0m')
             else:
                 print(f"Nenhum cliente cadastrado com ID {escolha}.")
         except ValueError:
-            print("Opção inválida!")  # Trata exceção se o usuário inserir um valor inválido
+            print('\033[31m' + "Opção inválida!" + '\033[0;0m')  # Trata exceção se o usuário inserir um valor inválido

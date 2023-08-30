@@ -8,11 +8,11 @@ def fazer_reserva(quartos, clientes, reservas):
         
     # Verifica se há quartos cadastrados, se não houver a função é cancelada
     if not quartos:
-        return print("\nNão há quartos cadastrados\n")  
+        return print('\033[31m' + "\nNão há quartos cadastrados\n" + '\033[0;0m')  
         
     # Verifica se há clientes cadastrados, se não houver a função é cancelada  
     if not clientes:
-        return print("\nNão há clientes cadastrados\n")
+        return print('\033[31m' + "\nNão há clientes cadastrados\n" + '\033[0;0m')
     
     while True:      
         # Verifica quartos disponíveis 
@@ -25,7 +25,7 @@ def fazer_reserva(quartos, clientes, reservas):
             
         #Verifica se há quartos disponiveis, se não houver a função é cancelada
         if len(quartos_disponiveis) == 0:
-            return print("\nNÃO HÁ MAIS QUARTOS DISPONÍVEIS\n")
+            return print('\033[31m' + "\nNÃO HÁ MAIS QUARTOS DISPONÍVEIS\n" + '\033[0;0m')
         
         try:      
             escolha_quarto = int(input("Escolha o quarto: "))
@@ -50,12 +50,12 @@ def fazer_reserva(quartos, clientes, reservas):
         try:
             escolha_cliente = int(input("Escolha o cliente: "))
         except ValueError:
-            print('OPÇÃO INVÁLIDA!\n')
+            print('\033[31m' + 'OPÇÃO INVÁLIDA!\n' + '\033[0;0m\n')
             continue
             
         #Verifica se escolha_cliente é valida
         if escolha_cliente not in lista_clientes:
-            print("OPÇÃO INVÁLIDA\n")
+            print('\033[31m' + "OPÇÃO INVÁLIDA\n" + '\033[0;0m\n')
             continue
         break
         
@@ -70,7 +70,7 @@ def fazer_reserva(quartos, clientes, reservas):
             dia_in, mes_in, ano_in = map(int, check_in.split('/'))
             dia_out, mes_out, ano_out = map(int, check_out.split('/'))
         except ValueError:
-            print("\nPreencha os campos de Check-IN e Check-OUT corretamente!\n")
+            print('\033[31m' + "\nPreencha os campos de Check-IN e Check-OUT corretamente!\n" + '\033[0;0m\n')
             continue
 
         #Verificação para que o check-out não seja antes do check-in
@@ -78,7 +78,7 @@ def fazer_reserva(quartos, clientes, reservas):
         if (ano_in, mes_in, dia_in) < (ano_out, mes_out, dia_out):
             break
         else:
-            print("\nO CHECK-IN TEM QUE ACONTECER ANTES DO CHECK-OUT\n")
+            print('\033[31m' + "\nO CHECK-IN TEM QUE ACONTECER ANTES DO CHECK-OUT\n" + '\033[0;0m\n')
             continue
         
     # Mudando status 'reservado' para 'sim'
@@ -97,4 +97,4 @@ def fazer_reserva(quartos, clientes, reservas):
        
     #Adicionado reserva a lista de reservas    
     reservas.append(reserva)
-    print("\nReserva feita com sucesso!\n")
+    print('\033[32m' + "\nReserva feita com sucesso!\n" + '\033[0;0m\n')

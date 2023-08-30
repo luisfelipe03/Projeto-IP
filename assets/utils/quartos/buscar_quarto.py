@@ -17,10 +17,11 @@ def buscar_quarto(quartos):
     while True:
         try:
             escolha_busca = int(input("Digite (1) para buscar pelo ID do quarto\nOu digite (2) para buscar pelo número do quarto: "))
+        
             break
         except ValueError:
             # Mensagem de erro em caso de entrada inválida
-            print("OPÇÃO INVÁLIDA!")
+            print('\033[31m' + "OPÇÃO INVÁLIDA!" + '\033[0;0m')
             continue
         
     if escolha_busca == 1:
@@ -37,7 +38,7 @@ def buscar_quarto(quartos):
                 print(f"Quarto com ID = {quarto_id} não encontrado")
         except ValueError:
             # Mensagem de erro em caso de entrada inválida
-            print("OPÇÃO INVÁLIDA!")
+            print('\033[31m' + "OPÇÃO INVÁLIDA!" + '\033[0;0m')
     
     if escolha_busca == 2:
         try:
@@ -53,6 +54,6 @@ def buscar_quarto(quartos):
                 print(f"Quarto com número = {quarto_num} não encontrado!")
         except ValueError:
             # Mensagem de erro em caso de entrada inválida
-            print("OPÇÃO INVÁLIDA!")
+            print('\033[31m' + "OPÇÃO INVÁLIDA!" + '\033[0;0m')
 
 

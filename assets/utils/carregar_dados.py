@@ -45,6 +45,6 @@ def carregar_dados():
                 }
                 reservas.append(reserva) # Adicionando a reserva à lista de reservas
     except FileNotFoundError:
-        print("Arquivo não encontrado")
+        print('\033[31m' + "Arquivo não encontrado" + '\033[0;0m\n')
         
     return quartos, clientes, reservas # Retornando as listas de quartos, clientes e reservas

@@ -12,12 +12,12 @@ def editar_quarto(quartos):
     
     if quarto_encontrado is None:
         #Vermelho
-        print(f"Não foi encontrado nenhum quarto com o número {numero}")
+        print('\033[31m' + f"Não foi encontrado nenhum quarto com o número {numero}" + '\033[0;0m')
         return
     
     if quarto_encontrado['reservado'] == "sim":
         #Vermelho
-        return print("NÃO É POSSIVEL EDITAR QUARTO QUE ESTÁ RESERVADO")
+        return print('\033[31m' + "NÃO É POSSIVEL EDITAR QUARTO QUE ESTÁ RESERVADO" + '\033[0;0m')
     
     print(f"Editando quarto número {numero}:")
     while True:
@@ -25,7 +25,7 @@ def editar_quarto(quartos):
             novo_numero = int(input("Novo número do quarto: "))
             if verifica_numero_existente_quarto(novo_numero, quartos):
                 #Vermelho
-                print(f"Já existe um quarto cadastrado com esse número: {novo_numero}")
+                print('\033[31m' + f"Já existe um quarto cadastrado com esse número: {novo_numero}" + '\033[0;0m')
                 continue
             break
         except ValueError:
