@@ -56,7 +56,7 @@ def principal():
             if reservas_encontradas:
                 print("Detalhes encontrados:")
                 for detalhes in reservas_encontradas:
-                    print("-" * 40)
+                    print("-=-=-=-=-=-=-=-=-=-==-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=--=")
                     for key, value in detalhes.items():
                         print(f"{key}: {value}")
             else:

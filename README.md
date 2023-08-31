@@ -22,19 +22,19 @@
 	- [x] Editar reserva 
 	- [x] Cancelar reserva
 	- [x] Ver todos as reservas
-	- [ ] Buscar reserva por Número de quarto/Nome de cliente 
+	- [x] Buscar reserva por ID da reserva/ID do quarto
 
 1. Funções de quarto:
 	- [x] Cadastrar quarto
-	- [ ] Editar cadastro do quarto
+	- [x] Editar cadastro do quarto
 	- [x] Remover quartos
-	- [ ] Buscar quartos por ID/Número do quarto
+	- [x] Buscar quartos por ID/Número do quarto
 
 1. Funções do cliente:
 	- [x] Cadastrar cliente
-	- [ ] Editar cadastro de cliente
+	- [x] Editar cadastro de cliente
 	- [x] Excluir cadastro de cliente
-	- [ ] Buscar cliente por ID/Nome
+	- [x] Buscar cliente por ID/Nome
 
 1. Outras funções:
  	- [x] Mostar menu 
@@ -42,7 +42,7 @@
 	- [x] Salvar dados no arquivo .CSV
 	
 
-<h3>Atributos das "classe"... :</h3>
+<h3>Atributos dos itens :</h3>
 
 - Reserva:
 	+ ID da reserva
@@ -63,3 +63,23 @@
 	+ CPF
 	+ RG
 
+
+## :floppy_disk: Como executar o projeto
+
+### Pré requisitos 
+
+- [Git](https://git-scm.com) 
+- [Python 3.7 ou superior](https://www.python.org/downloads/)
+
+### Executando o projeto em sua maquina
+```bash
+1- Clone este repositorio:
+
+$ git clone https://github.com/luisfelipe03/Projeto-IP.git
+
+2- Abra o diretorio do projeto no terminal
+
+3- Execute o projeto:
+
+$ python app.py
+```
